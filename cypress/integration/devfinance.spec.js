@@ -35,14 +35,12 @@ beforeEach(()=>{
         cy.get('#data-table tbody tr').should('have.length', 3)
     })
     it('Remover uma transação de entrada ou saída', () =>{
-        
-        cy.get('a[onclick*=open]').click()
-        cy.get('#description').type('freela')
-        cy.get('#amount').type('12')
-        cy.get('#date').type('2021-11-03')
-
-        cy.contains('Salvar').click();
-
+    
+        cy.get('td.description')
+        cy.contains('Mesada') 
+        .parent()   
+        .find('img[onclick*=remove]')  
+        .click()
 
         cy.get('td.description')
         cy.contains('Comida') 
@@ -50,7 +48,7 @@ beforeEach(()=>{
         .find('img[onclick*=remove]')  
         .click()
 
-        cy.get('table tbody tr').should('have.length', 2)
+        cy.get('table tbody tr').should('have.length', 0)
 
     })
 
